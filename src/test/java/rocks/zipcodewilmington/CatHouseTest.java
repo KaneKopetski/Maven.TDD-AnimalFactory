@@ -16,7 +16,7 @@ public class CatHouseTest {
     // TODO - Create tests for `Integer getNumberOfCats()`
 
     @Test
-    public void addCatTest() {
+    public void addTest() {
         CatHouse catHouse = new CatHouse();
         Cat cat = new Cat(null, null,4);
 
@@ -29,7 +29,7 @@ public class CatHouseTest {
     }
 
     @Test
-    public void removeCatByIdTest() {
+    public void removeByIdTest() {
         CatHouse catHouse = new CatHouse();
         Cat cat = new Cat(null, null,4);
 
@@ -56,7 +56,7 @@ public class CatHouseTest {
     }
 
     @Test
-    public void removeCatTest() {
+    public void removeTest() {
         CatHouse catHouse = new CatHouse();
         Cat cat = new Cat(null, null,11);
 
@@ -73,16 +73,10 @@ public class CatHouseTest {
     public void getNumberOfCatsTest() {
         CatHouse catHouse = new CatHouse();
         Cat cat1 = new Cat(null, null,11);
-        Cat cat2 = new Cat(null, null,1);
-        Cat cat3 = new Cat(null, null,5);
-
 
         catHouse.add(cat1);
-        catHouse.add(cat2);
-        catHouse.add(cat3);
 
-
-        Integer expected = 3;
+        Integer expected = 1;
         Integer actual = catHouse.getNumberOfCats();
 
         Assert.assertEquals(expected, actual);
