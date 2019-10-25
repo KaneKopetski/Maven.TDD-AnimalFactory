@@ -2,7 +2,9 @@ package rocks.zipcodewilmington;
 
 import org.junit.Assert;
 import org.junit.Test;
+import rocks.zipcodewilmington.animals.Animal;
 import rocks.zipcodewilmington.animals.Dog;
+import rocks.zipcodewilmington.animals.Mammal;
 
 import java.util.Date;
 
@@ -30,18 +32,89 @@ public class DogTest {
         String dogName = dog.getName();
         Assert.assertEquals(dogName, givenName);
     }
+
     @Test
-    public void testDogConstructor() {
+    public void constructorTest() {
+        String givenName = "Fido";
+        Date givenBirthDate = new Date();
+        Integer givenId = 0;
 
-        String expectedName = "Fido";
-        Date expectedBirthDate = new Date(1/2019);
+        Dog dog = new Dog(givenName, givenBirthDate, givenId);
 
-        Dog dog = new Dog(expectedName, expectedBirthDate, 1);
+        String retrievedName = dog.getName();
+        Date retrievedBirthDate = dog.getBirthDate();
+        Integer retrievedId = dog.getId();
 
-        String actualName = dog.getName();
+        Assert.assertEquals(givenName, retrievedName);
+        Assert.assertEquals(givenBirthDate, retrievedBirthDate);
+        Assert.assertEquals(givenId, retrievedId);
+    }
+
+    @Test
+    public void testSetBirthDate(){
+        Date newBirthDate = new Date(6/12/1989);
+
+        Dog dog = new Dog(null, null, null);
+        dog.setBirthDate(newBirthDate);
+
         Date actualBirthDate = dog.getBirthDate();
+        Date expectedBirthDate = new Date(6/12/1989);
 
-        Assert.assertEquals(expectedBirthDate, actualBirthDate);
-        Assert.assertEquals(expectedName, actualName);
+        Assert.assertEquals(actualBirthDate, expectedBirthDate);
+    }
+
+    @Test
+    public void testSpeak(){
+        Dog dog = new Dog(null, null, null);
+
+        String actualSpoken = dog.speak();
+        String expectedSpoken = "bark!";
+
+        Assert.assertEquals(actualSpoken, expectedSpoken);
+    }
+
+    @Test
+    public void testEat(){
+        Dog dog = new Dog(null, null, null);
+
+        Integer expectedNumberOfMeals = 1;
+
+        dog.eat(null);
+
+        Integer actualNumberOfMeals = dog.getNumberOfMealsEaten();
+
+        Assert.assertEquals(expectedNumberOfMeals, actualNumberOfMeals);
+    }
+
+    @Test
+    public void testGetID() {
+        Dog dog = new Dog(null, null, null);
+
+        Integer actualId = dog.getId();
+        Integer expectedId = null;
+
+        Assert.assertEquals(actualId, expectedId);
+    }
+
+    @Test
+    public void testAnimalInheritance() {
+        Dog dog = new Dog(null, null, null);
+
+        Boolean expected = true;
+
+        Boolean actual = dog instanceof Animal;
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testMammalInheritance() {
+        Dog dog = new Dog(null, null, null);
+
+        Boolean expected = true;
+
+        Boolean actual = dog instanceof Mammal;
+
+        Assert.assertEquals(expected, actual);
     }
 }
