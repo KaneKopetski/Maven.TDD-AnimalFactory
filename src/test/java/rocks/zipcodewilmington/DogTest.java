@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import rocks.zipcodewilmington.animals.Dog;
 
+import java.util.Date;
+
 /**
  * @author leon on 4/19/18.
  */
@@ -27,5 +29,19 @@ public class DogTest {
         // Then (we expect to get the given name from the dog)
         String dogName = dog.getName();
         Assert.assertEquals(dogName, givenName);
+    }
+    @Test
+    public void testDogConstructor() {
+
+        String expectedName = "Fido";
+        Date expectedBirthDate = new Date(1/2019);
+
+        Dog dog = new Dog(expectedName, expectedBirthDate, 1);
+
+        String actualName = dog.getName();
+        Date actualBirthDate = dog.getBirthDate();
+
+        Assert.assertEquals(expectedBirthDate, actualBirthDate);
+        Assert.assertEquals(expectedName, actualName);
     }
 }
